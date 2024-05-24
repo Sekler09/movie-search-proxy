@@ -22,5 +22,15 @@ app.use(
     },
   }),
 );
+app.use(
+  '/images',
+  createProxyMiddleware({
+    target: process.env.API_IMAGES_URL,
+    changeOrigin: true,
+    pathRewrite: {
+      [`^/images`]: '',
+    },
+  }),
+);
 
 app.listen(3000);
